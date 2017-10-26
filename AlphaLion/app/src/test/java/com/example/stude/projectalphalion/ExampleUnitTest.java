@@ -1,4 +1,4 @@
-package com.example.stude.alphalion;
+package com.example.stude.projectalphalion;
 
 import org.junit.Test;
 

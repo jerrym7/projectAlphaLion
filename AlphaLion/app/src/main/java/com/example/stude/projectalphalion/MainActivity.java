@@ -1,10 +1,9 @@
-package com.example.stude.alphalion;
+package com.example.stude.projectalphalion;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.content.Intent;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -16,7 +15,7 @@ public class MainActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
     public void onButtonClick(View v)
     {
@@ -27,7 +26,7 @@ public class MainActivity extends Activity {
         }
         if(v.getId() == R.id.bsettings )
         {
-            Intent i = new Intent(MainActivity.this, Level1.class);
+            Intent i = new Intent(MainActivity.this, Settings.class);
             startActivity(i);
         }
     }

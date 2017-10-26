@@ -1,4 +1,4 @@
-package com.example.stude.alphalion;
+package com.example.stude.projectalphalion;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -21,11 +21,11 @@ public class Play extends Activity {
         //set title off
 
         //full screen
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
     public void onButtonClick(View v)
     {
-        if(v.getId() == R.id.bplay )
+        /*if(v.getId() == R.id.b )
         {
             Intent i = new Intent(Play.this, Level1.class);
             startActivity(i);

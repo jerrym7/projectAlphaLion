@@ -1,4 +1,4 @@
-package com.example.stude.alphalion;
+package com.example.stude.projectalphalion;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -19,6 +19,6 @@ public class Level1 extends Activity {
         //set title off
 
         //full screen
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 }
