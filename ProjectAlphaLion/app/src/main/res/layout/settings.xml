@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:label="@string/Settings"
+    android:orientation="vertical">
+
+
+    <Switch
+        android:id="@+id/snotification"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:contentDescription="Turn off if you wish not to receive any Noftifications from this app"
+        android:showText="true"
+        android:text="@string/Notification" />
+
+    <Switch
+        android:id="@+id/smusic"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:showText="true"
+        android:text="@string/Music" />
+
+    <Button
+        android:id="@+id/about"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="89dp"
+        android:text="@string/About" />
+
+</LinearLayout>

@@ -14,11 +14,10 @@ import android.view.WindowManager;
 public class Play extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-        setContentView(R.layout.display);
         //set title off
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.display);
+
 
         //full screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);

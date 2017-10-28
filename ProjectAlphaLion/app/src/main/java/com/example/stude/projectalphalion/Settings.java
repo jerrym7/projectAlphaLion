@@ -19,7 +19,7 @@ import android.view.WindowManager;
 
             setContentView(R.layout.settings);
             //set title off
-
+            setTitle("Settings");
             //full screen
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
