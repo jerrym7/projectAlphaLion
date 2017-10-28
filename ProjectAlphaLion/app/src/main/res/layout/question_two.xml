@@ -28,6 +28,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="10"
+        android:padding="10dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/my_button"
         tools:layout_editor_absoluteX="147dp"
         tools:layout_editor_absoluteY="206dp" />
 
@@ -36,6 +39,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="4"
+        android:padding="10dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/my_button"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="281dp" />
 
@@ -44,6 +50,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="6"
+        android:padding="10dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/my_button"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="358dp" />
 </android.support.constraint.ConstraintLayout>
