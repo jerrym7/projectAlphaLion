@@ -8,7 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 /**
- * Created by stude on 10/18/2017.
+ * Created by Gerardo on 10/18/2017.
  */
 
 public class Play extends Activity {

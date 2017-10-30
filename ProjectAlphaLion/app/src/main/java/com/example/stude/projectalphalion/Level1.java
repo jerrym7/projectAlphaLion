@@ -9,7 +9,7 @@ import android.view.WindowManager;
 import java.util.Random;
 
 /**
- * Created by stude on 10/18/2017.
+ * Created by Gerardo on 10/18/2017.
  */
 
 public class Level1 extends Activity {
