@@ -14,6 +14,7 @@
         android:layout_height="62dp"
         android:contentDescription="Turn off if you wish not to receive any Noftifications from this app"
         android:showText="true"
+        android:onClick="onNotificationClick"
         android:text="@string/Notification" />
 
     <Switch
@@ -21,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:showText="true"
+        android:onClick="onMusicClick"
         android:text="@string/Music" />
 
     <Button
@@ -28,6 +30,7 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="match_parent"
         android:layout_height="89dp"
+        android:onClick="onAboutClick"
         android:text="@string/About" />
 
 </LinearLayout>
