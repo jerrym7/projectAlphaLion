@@ -3,9 +3,9 @@ package com.example.stude.projectalphalion;
 import android.app.Activity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-
 import java.util.Random;
 
 /**
@@ -26,6 +26,7 @@ public class Level1 extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         startBackgroundMusic();
+
     }
     public void startBackgroundMusic()
     {
