@@ -7,6 +7,9 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -14,7 +17,9 @@ import android.widget.Toast;
  */
 
 
-public class Settings extends Activity {
+public class Settings extends Activity implements CompoundButton.OnCheckedChangeListener{
+    Switch n, m; //(n)otification switch and (m)usic switch
+    //TextView textView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -25,19 +30,40 @@ public class Settings extends Activity {
         setTitle("Settings");
         //full screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        n = (Switch) findViewById(R.id.snotification);
+        m = (Switch) findViewById(R.id.smusic);
+        //textView = (TextView)findViewById(R.id.textView);
+        n.setOnCheckedChangeListener(this);
+
     }
 
+
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+    }
+
+    //method for Notification switch
     public void onNotificationClick(View v)
     {
-        Toast.makeText(getApplicationContext(),"Notifications: On",Toast.LENGTH_SHORT).show();
+        if(n.isChecked())
+            Toast.makeText(getApplicationContext(),"Notifications: On",Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(getApplicationContext(),"Notifications: Off",Toast.LENGTH_SHORT).show();
     }
+    //method for Music switch
     public void onMusicClick(View v)
     {
-        Toast.makeText(getApplicationContext(),"Music: On",Toast.LENGTH_SHORT).show();
+        if(m.isChecked())
+            Toast.makeText(getApplicationContext(),"Music: On",Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(getApplicationContext(),"Music: Off",Toast.LENGTH_SHORT).show();
     }
+    //method for About button
     public void onAboutClick(View v) {
         if (v.getId() == R.id.about) {
-            Intent i = new Intent(Settings.this, Level1.class);
+            Intent i = new Intent(Settings.this, Settings.class);
             startActivity(i);
         }
     }
