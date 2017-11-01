@@ -8,9 +8,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import java.util.Random;
 
-/**
- * Created by Gerardo on 10/18/2017.
- */
 
 public class Level1 extends Activity {
     MediaPlayer bgroundMusic;

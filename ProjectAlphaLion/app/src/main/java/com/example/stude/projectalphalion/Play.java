@@ -7,9 +7,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-/**
- * Created by Gerardo on 10/18/2017.
- */
 
 public class Play extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
