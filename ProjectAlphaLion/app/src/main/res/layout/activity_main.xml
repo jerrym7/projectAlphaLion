@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/bplay"
-        style="@android:style/Widget.Material.Light.Button.Inset"
+        android:background="@drawable/blue_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onButtonClick"
@@ -25,7 +25,7 @@
 
     <Button
         android:id="@+id/bsettings"
-        style="@android:style/Widget.Material.Light.Button.Inset"
+        android:background="@drawable/blue_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onButtonClick"
