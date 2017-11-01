@@ -54,7 +54,7 @@ public class Level1 extends Activity {
     }
     public void onClick(View v) {
         if (v.getId() == R.id.theanswertotwo) {
-            score++;//keep track of the score
+            score+=10;//keep track of the score
             //set a custom color green
             scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
             scoreText.setText(Integer.toString(score));
