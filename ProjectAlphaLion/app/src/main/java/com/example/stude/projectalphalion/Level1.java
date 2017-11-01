@@ -1,16 +1,21 @@
 package com.example.stude.projectalphalion;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
+
 import java.util.Random;
 
 
 public class Level1 extends Activity {
     MediaPlayer bgroundMusic;
+    int score = 0;
+    TextView scoreText;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -46,5 +51,23 @@ public class Level1 extends Activity {
         super.onPause();
         bgroundMusic.release();
         finish();
+    }
+    public void onClick(View v) {
+        if (v.getId() == R.id.theanswertotwo) {
+            score++;
+            scoreText.setBackgroundColor(Color.GREEN);
+            scoreText.setText(Integer.toString(score));
+
+        }
+        else if(v.getId() == R.id.wronganswer_2_1)
+        {
+            scoreText.setBackgroundColor(Color.RED);
+            scoreText.setText(Integer.toString(score));
+        }
+        else if(v.getId() == R.id.wronganswer_2_2)
+        {
+            scoreText.setBackgroundColor(Color.RED);
+            scoreText.setText(Integer.toString(score));
+        }
     }
 }
