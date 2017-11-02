@@ -1,6 +1,7 @@
 package com.example.stude.projectalphalion;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -42,6 +43,13 @@ public class Level1 extends Activity {
         // bgroundMusic = MediaPlayer.create(MainActivity.this,R.raw.sellingdrugs);
         bgroundMusic.setLooping(true);
         // bgroundMusic.start();
+    }
+    //method to avoid the crash after going back to main menu
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(Level1.this, MainActivity.class);
+        startActivity(intent);
+
     }
     /*
         Function to stop the music after it they close the app
