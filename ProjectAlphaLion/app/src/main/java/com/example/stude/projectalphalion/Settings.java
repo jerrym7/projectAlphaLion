@@ -62,4 +62,12 @@ public class Settings extends Activity implements CompoundButton.OnCheckedChange
             startActivity(i);
         }
     }
+
+    //method to avoid the crash after going back to main menu
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(Settings.this, MainActivity.class);
+        startActivity(intent);
+
+    }
 }
