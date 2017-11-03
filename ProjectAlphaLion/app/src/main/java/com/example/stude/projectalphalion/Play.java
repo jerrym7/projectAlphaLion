@@ -19,17 +19,13 @@ public class Play extends Activity {
         //full screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
-    public void onButtonClick(View v)
+    public void onPlayClick(View v)
     {
-        /*if(v.getId() == R.id.b )
+        if(v.getId() == R.id.lvl1Button )
         {
             Intent i = new Intent(Play.this, Level1.class);
             startActivity(i);
         }
-      /*  if(v.getId() == R.id.bscores )
-        {
-            Intent i = new Intent(MainActivity.this, Play.class);
-            startActivity(i);
-        }*/
+
     }
 }

@@ -45,6 +45,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/my_button"
         android:text="4"
+        android:onClick="onClick"
         app:layout_constraintBottom_toTopOf="@+id/wronganswer_2_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
