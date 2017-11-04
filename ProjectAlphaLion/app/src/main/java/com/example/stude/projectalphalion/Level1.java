@@ -46,6 +46,22 @@ public class Level1 extends Activity {
 
 
     }
+    /* not yet done
+     public void question2(View v) {
+        //update text of question and buttons
+        int x[] = new int[3];
+        boolean[] y = new boolean[3];
+        questionText.setText("What is "+foo(x,y) +"?");
+        p1_button = (Button)findViewById(R.id.wronganswer_2_1);
+        p1_button.setText(x[0]);
+        p2_button = (Button)findViewById(R.id.theanswertotwo);
+        p2_button.setText(x[1]);
+        p3_button = (Button)findViewById(R.id.wronganswer_2_2);
+        p3_button.setText(x[2]);
+
+
+    }
+     */
     public void startBackgroundMusic()
     {
         int[] sounds={R.raw.sellingdrugs, R.raw.deadpresidents};
