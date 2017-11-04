@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -16,7 +17,8 @@ import java.util.Random;
 public class Level1 extends Activity {
     MediaPlayer bgroundMusic;
     int score = 0;
-    TextView scoreText;
+    TextView scoreText,questionText;
+    Button p1_button,p2_button,p3_button;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -27,8 +29,21 @@ public class Level1 extends Activity {
 
         //full screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+        scoreText = findViewById(R.id.score);
+        questionText = findViewById(R.id.question_text);
         startBackgroundMusic();
+
+    }
+    public void questions(View v) {
+        //update text of question and buttons
+        questionText.setText("What is 3+3 ?");
+        p1_button = (Button)findViewById(R.id.wronganswer_2_1);
+        p1_button.setText("10");
+        p2_button = (Button)findViewById(R.id.theanswertotwo);
+        p2_button.setText("6");
+        p3_button = (Button)findViewById(R.id.wronganswer_2_2);
+        p3_button.setText("100");
+
 
     }
     public void startBackgroundMusic()
