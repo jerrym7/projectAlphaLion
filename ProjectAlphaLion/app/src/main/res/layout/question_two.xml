@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:id="@+id/editText3"
+        android:id="@+id/question_text"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -45,6 +45,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/my_button"
         android:text="4"
+        android:onClick="onClick"
         app:layout_constraintBottom_toTopOf="@+id/wronganswer_2_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -62,4 +63,22 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/theanswertotwo" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Score:"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="3dp" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="312dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        tools:layout_editor_absoluteY="3dp" />
+
 </android.support.constraint.ConstraintLayout>
