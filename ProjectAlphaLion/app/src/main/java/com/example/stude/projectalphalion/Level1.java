@@ -30,7 +30,7 @@ public class Level1 extends Activity {
     public static int MDboundary = 12;
     public static int operation = 0;
     public static int answer = 0;
-    public static int lives =3;
+    public static int lives ;
     public static Random RNG = new Random();
     static ArrayList<Integer> allAnswers = new ArrayList<Integer>();
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,8 @@ public class Level1 extends Activity {
         p2_button = (Button) findViewById(R.id.button1);
         p4_button = (Button) findViewById(R.id.button3);
         //startBackgroundMusic();
-        generateQ();
+        lives=3;
+        runPlay(lives);
 
     }
 
@@ -135,7 +136,7 @@ public class Level1 extends Activity {
                     lives--;
                 }
                 runPlay(lives);
-            } else {
+            } else if(v == p4_button) {
                 if (p4_button.getText().equals(Integer.toString(answer))) {
                     score += 1;
                     scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
