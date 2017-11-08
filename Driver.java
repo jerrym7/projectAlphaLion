@@ -20,6 +20,7 @@ public class Driver {
     public static int MDboundary = 12;
     public static int operation = 0;
     public static int answer = 0;
+	public static int lives =3;
     public static Random RNG = new Random();
     public static void main (String[] args){
         
@@ -33,7 +34,7 @@ public class Driver {
         //Continue loop while player is winning. Starts off true, because
         // the player is already winning by choosing our amazing game.
         boolean winning = true;
-        while(winning){
+        while(lives>0){
             //Display level with levelNum; increment by 0.1 each loop run.
             System.out.println("Level "+ levelNum );    
             
@@ -109,8 +110,8 @@ public class Driver {
                 System.out.println("Win!");
             }
             else{
-                System.out.println("LOSE!");
-                winning = false;
+				lives--;
+                System.out.println("Lost a life");
             }
             
             levelNum = levelNum+0.1;
