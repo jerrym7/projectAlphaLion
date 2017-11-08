@@ -110,4 +110,24 @@ public class Level1 extends Activity {
             scoreText.setText(Integer.toString(score));
         }
     }
+    public static String foo(int[] x, boolean[] y)
+    {
+        Random rand = new Random();
+        int num1=rand.nextInt(11);
+        int num2= rand.nextInt(11);
+        int cAnswer = rand.nextInt(3);
+        for(int i = 0;i<3;i++)
+        {
+            if(cAnswer==i)
+            {
+                x[i] = num1+num2;
+                y[i]=true;
+            }
+            else {
+                x[i] = rand.nextInt(11) + rand.nextInt(11);
+                y[i] = false;
+            }
+        }
+        return num1+" + " +num2;
+    }
 }
