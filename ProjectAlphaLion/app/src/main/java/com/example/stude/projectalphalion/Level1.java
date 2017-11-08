@@ -31,7 +31,7 @@ public class Level1 extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         scoreText = findViewById(R.id.score);
         questionText = findViewById(R.id.question_text);
-        startBackgroundMusic();
+        //startBackgroundMusic();
 
     }
     public void questions(View v) {
@@ -46,7 +46,7 @@ public class Level1 extends Activity {
 
 
     }
-    /* not yet done
+    /* not yet done//prototype 11/7/17
      public void question2(View v) {
         //update text of question and buttons
         int x[] = new int[3];
@@ -62,7 +62,7 @@ public class Level1 extends Activity {
 
     }
      */
-    public void startBackgroundMusic()
+    /**public void startBackgroundMusic()
     {
         int[] sounds={R.raw.sellingdrugs, R.raw.deadpresidents};
         Random r = new Random();
@@ -74,7 +74,7 @@ public class Level1 extends Activity {
         // bgroundMusic = MediaPlayer.create(MainActivity.this,R.raw.sellingdrugs);
         bgroundMusic.setLooping(true);
         // bgroundMusic.start();
-    }
+    }*/
     //method to avoid the crash after going back to main menu
     public void onBackPressed(){
         super.onBackPressed();
