@@ -202,7 +202,7 @@ public class Level1 extends Activity {
 
         return x;
     }
-    public void runPlay(double lives)
+    public void runPlay(int lives)
     {
 
 
