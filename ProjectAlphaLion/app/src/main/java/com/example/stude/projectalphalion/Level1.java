@@ -100,9 +100,6 @@ public class Level1 extends Activity {
 */
     public void onClick(View v) {
 
-        if (lives <= 0) {
-            goLevelWorld();
-        } else {
             if (v == p1_button) {
                 if (p1_button.getText().equals(Integer.toString(answer))) {
                     score += 1;
@@ -148,7 +145,6 @@ public class Level1 extends Activity {
                 }
                 runPlay(lives);
             }
-        }
     }
 
     //generator
@@ -294,7 +290,11 @@ public class Level1 extends Activity {
 
 
             levelNum = levelNum+0.1;
-        }// end -while loop for game. If winning = false, exits.
+        }
+        else
+        {
+            goLevelWorld();// end -while loop for game. If winning = false, exits.
+        }
 
     }
     //go back to level world after you got 0 lives
