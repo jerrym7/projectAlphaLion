@@ -49,6 +49,7 @@ public class Level1 extends Activity {
         p1_button = (Button) findViewById(R.id.button0);
         p3_button = (Button) findViewById(R.id.button2);
         p2_button = (Button) findViewById(R.id.button1);
+        p4_button = (Button) findViewById(R.id.button3);
         //startBackgroundMusic();
         generateQ();
 
