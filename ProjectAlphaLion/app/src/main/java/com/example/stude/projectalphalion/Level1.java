@@ -98,65 +98,54 @@ public class Level1 extends Activity {
 */
     public void onClick(View v) {
 
-        if(v == p1_button )
-        {
-            if(p1_button.getText().equals(Integer.toString(answer))) {
-                score += 1;
-                scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
-                scoreText.setText(Integer.toString(score));
+        if (lives <= 0) {
+            goLevelWorld();
+        } else {
+            if (v == p1_button) {
+                if (p1_button.getText().equals(Integer.toString(answer))) {
+                    score += 1;
+                    scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
+                    scoreText.setText(Integer.toString(score));
+                } else {
+                    scoreText.setBackgroundColor(Color.RED);
+                    scoreText.setText(Integer.toString(score));
+                    lives--;
+                }
+                runPlay(lives);
+            } else if (v == p2_button) {
+                if (p2_button.getText().equals(Integer.toString(answer))) {
+                    score += 1;
+                    scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
+                    scoreText.setText(Integer.toString(score));
+                } else {
+                    scoreText.setBackgroundColor(Color.RED);
+                    scoreText.setText(Integer.toString(score));
+                    lives--;
+                }
+                runPlay(lives);
+            } else if (v == p3_button) {
+                if (p3_button.getText().equals(Integer.toString(answer))) {
+                    score += 1;
+                    scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
+                    scoreText.setText(Integer.toString(score));
+                } else {
+                    scoreText.setBackgroundColor(Color.RED);
+                    scoreText.setText(Integer.toString(score));
+                    lives--;
+                }
+                runPlay(lives);
+            } else {
+                if (p4_button.getText().equals(Integer.toString(answer))) {
+                    score += 1;
+                    scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
+                    scoreText.setText(Integer.toString(score));
+                } else {
+                    scoreText.setBackgroundColor(Color.RED);
+                    scoreText.setText(Integer.toString(score));
+                    lives--;
+                }
+                runPlay(lives);
             }
-            else
-            {
-                scoreText.setBackgroundColor(Color.RED);
-                scoreText.setText(Integer.toString(score));
-                lives--;
-            }
-            runPlay(lives);
-        }
-        else if(v == p2_button )
-        {
-            if(p2_button.getText().equals(Integer.toString(answer))) {
-                score += 1;
-                scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
-                scoreText.setText(Integer.toString(score));
-            }
-            else
-            {
-                scoreText.setBackgroundColor(Color.RED);
-                scoreText.setText(Integer.toString(score));
-                lives--;
-            }
-            runPlay(lives);
-        }
-        else if(v == p3_button)
-        {
-            if(p3_button.getText().equals(Integer.toString(answer))) {
-                score += 1;
-                scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
-                scoreText.setText(Integer.toString(score));
-            }
-            else
-            {
-                scoreText.setBackgroundColor(Color.RED);
-                scoreText.setText(Integer.toString(score));
-                lives--;
-            }
-            runPlay(lives);
-        }
-        else
-        {
-            if(p4_button.getText().equals(Integer.toString(answer))) {
-                score += 1;
-                scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
-                scoreText.setText(Integer.toString(score));
-            }
-            else
-            {
-                scoreText.setBackgroundColor(Color.RED);
-                scoreText.setText(Integer.toString(score));
-                lives--;
-            }
-            runPlay(lives);
         }
     }
 
@@ -304,6 +293,12 @@ public class Level1 extends Activity {
 
             levelNum = levelNum+0.1;
         }// end -while loop for game. If winning = false, exits.
+
+    }
+    //go back to level world after you got 0 lives
+    private void goLevelWorld() {
+        Intent i = new Intent(Level1.this, MainActivity.class);
+        startActivity(i);
 
     }
 }
