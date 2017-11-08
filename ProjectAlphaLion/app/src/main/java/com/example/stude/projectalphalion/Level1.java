@@ -299,7 +299,7 @@ public class Level1 extends Activity {
     }
     //go back to level world after you got 0 lives
     private void goLevelWorld() {
-        Intent i = new Intent(Level1.this, MainActivity.class);
+        Intent i = new Intent(Level1.this, Play.class);
         startActivity(i);
 
     }
