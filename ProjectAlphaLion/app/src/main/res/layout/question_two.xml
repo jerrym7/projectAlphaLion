@@ -21,40 +21,40 @@
         android:textSize="24sp"
         android:textStyle="bold|italic"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/wronganswer_2_1"
+        app:layout_constraintBottom_toTopOf="@+id/button0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/wronganswer_2_1"
+        android:id="@+id/button0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/my_button"
         android:onClick="onClick"
         android:text="10"
-        app:layout_constraintBottom_toTopOf="@+id/theanswertotwo"
+        app:layout_constraintBottom_toTopOf="@+id/button1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/question_text" />
 
     <Button
-        android:id="@+id/theanswertotwo"
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/my_button"
         android:text="4"
         android:onClick="onClick"
-        app:layout_constraintBottom_toTopOf="@+id/wronganswer_2_2"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wronganswer_2_1" />
+        app:layout_constraintTop_toBottomOf="@+id/button0" />
 
     <Button
-        android:id="@+id/wronganswer_2_2"
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/my_button"
@@ -64,7 +64,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/theanswertotwo" />
+        app:layout_constraintTop_toBottomOf="@+id/button1" />
 
     <TextView
         android:id="@+id/textView"

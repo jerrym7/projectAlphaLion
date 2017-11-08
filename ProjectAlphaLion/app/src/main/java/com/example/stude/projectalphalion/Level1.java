@@ -34,18 +34,7 @@ public class Level1 extends Activity {
         //startBackgroundMusic();
 
     }
-    public void questions(View v) {
-        //update text of question and buttons
-        questionText.setText("What is 3+3 ?");
-        p1_button = (Button)findViewById(R.id.wronganswer_2_1);
-        p1_button.setText("10");
-        p2_button = (Button)findViewById(R.id.theanswertotwo);
-        p2_button.setText("6");
-        p3_button = (Button)findViewById(R.id.wronganswer_2_2);
-        p3_button.setText("100");
 
-
-    }
     /* not yet done//prototype 11/7/17
      public void question2(View v) {
         //update text of question and buttons
@@ -92,23 +81,55 @@ public class Level1 extends Activity {
         finish();
     }
     public void onClick(View v) {
-        if (v.getId() == R.id.theanswertotwo) {
-            score+=1;//keep track of the score
-            //set a custom color green
-            scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
-            scoreText.setText(Integer.toString(score));
+        int[] answers = new int[3]; //answers
+        boolean[] correct = new boolean[3]; //correct or not
+        questionText.setText(foo(answers,correct));//call the function
+        p1_button = (Button)findViewById(R.id.button0);
+        p1_button.setText(answers[0]);
+        p2_button = (Button)findViewById(R.id.button1);
+        p2_button.setText(answers[1]);
+        p3_button = (Button)findViewById(R.id.button2);
+        p3_button.setText(answers[2]);
+        if(v.getId() == R.id.button0 )
+        {
+            if(correct[0]==true) {
+                score += 1;
+                scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
+                scoreText.setText(Integer.toString(score));
+            }
+            else
+            {
+                scoreText.setBackgroundColor(Color.RED);
+                scoreText.setText(Integer.toString(score));
+            }
+        }
+        else if(v.getId() == R.id.button1 )
+        {
+            if(correct[1]==true) {
+                score += 1;
+                scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
+                scoreText.setText(Integer.toString(score));
+            }
+            else
+            {
+                scoreText.setBackgroundColor(Color.RED);
+                scoreText.setText(Integer.toString(score));
+            }
+        }
+        else
+        {
+            if(correct[2]==true) {
+                score += 1;
+                scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
+                scoreText.setText(Integer.toString(score));
+            }
+            else
+            {
+                scoreText.setBackgroundColor(Color.RED);
+                scoreText.setText(Integer.toString(score));
+            }
+        }
 
-        }
-        else if(v.getId() == R.id.wronganswer_2_1)
-        {
-            scoreText.setBackgroundColor(Color.RED);
-            scoreText.setText(Integer.toString(score));
-        }
-        else if(v.getId() == R.id.wronganswer_2_2)
-        {
-            scoreText.setBackgroundColor(Color.RED);
-            scoreText.setText(Integer.toString(score));
-        }
     }
     public static String foo(int[] x, boolean[] y)
     {
