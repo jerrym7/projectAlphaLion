@@ -28,4 +28,10 @@ public class Play extends Activity {
         }
 
     }
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(Play.this, MainActivity.class);
+        startActivity(intent);
+
+    }
 }

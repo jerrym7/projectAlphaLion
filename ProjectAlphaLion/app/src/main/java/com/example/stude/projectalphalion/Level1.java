@@ -82,12 +82,6 @@ public class Level1 extends Activity {
      * }
      */
     //method to avoid the crash after going back to main menu
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent = new Intent(Level1.this, MainActivity.class);
-        startActivity(intent);
-
-    }
 
     /*
         Function to stop the music after it they close the app
