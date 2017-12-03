@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -11,9 +12,11 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import static com.example.stude.projectalphalion.Play.level;
 
@@ -36,8 +39,8 @@ public class Level1 extends Activity {
     public static int answer = 0;
     public static int lives ;
     public static double levelNum;
-    public static double timeInSeconds;
-   // public static Timer timer = new Timer((int)1000*timeInSeconds,)//
+    public static double timeInSeconds = levelNum * 0.2 + 10;
+    public static Timer timer;
     public static Random RNG = new Random();
     static ArrayList<Integer> allAnswers = new ArrayList<Integer>();
 
@@ -49,23 +52,40 @@ public class Level1 extends Activity {
         setContentView(R.layout.question_two);
 
         //set title off
-        levelNum=level;
-        timeInSeconds = levelNum*0.2+10;
+
+
+
+        //load level and timer
+        levelNum = level;
+        timeInSeconds = levelNum * 0.2 + 10;
+        TimerTask timeFunc = new TimerTask(){
+            @Override
+            public void run(){
+                if(timeInSeconds>0){
+                    timeInSeconds--;
+                    timeLeftText.setText(Integer.toString((int) timeInSeconds));
+                }
+                else {
+
+                }
+            }
+        };
+        timer=new Timer();
+        timer.scheduleAtFixedRate(timeFunc,(int)(1000),(int)(1000));
         //full screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         scoreText = findViewById(R.id.score);
         questionText = findViewById(R.id.question_text);
         timeLeftText = findViewById(R.id.timeLeft);
-        timeLeftText.setText(Integer.toString((int)timeInSeconds));
-
+        timeLeftText.setText(Integer.toString((int) timeInSeconds));
+        //
         p1_button = (Button) findViewById(R.id.button0);
         p3_button = (Button) findViewById(R.id.button2);
         p2_button = (Button) findViewById(R.id.button1);
         p4_button = (Button) findViewById(R.id.button3);
         //startBackgroundMusic();
-        lives=3;
+        lives = 3;
         runPlay(lives);
-
     }
 
     private void generateQ() {
@@ -306,8 +326,18 @@ public class Level1 extends Activity {
     }
     //go back to level world after you got 0 lives
     private void goLevelWorld() {
+        timer.cancel();
+        timer=null;
         Intent i = new Intent(Level1.this, Play.class);
         startActivity(i);
+
+    }
+    public void onBackPressed(){
+        timer.cancel();
+        timer=null;
+        super.onBackPressed();
+        Intent intent = new Intent(Level1.this, Play.class);
+        startActivity(intent);
 
     }
 }
