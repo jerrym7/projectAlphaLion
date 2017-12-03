@@ -32,8 +32,8 @@ public class Level1 extends Activity {
     public static int MDboundary = 12;
     public static int operation = 0;
     public static int answer = 0;
-    public static int lives ;
-    public static double levelNum ;
+    public static int lives =3;
+    public static double levelNum =level;
     public static Random RNG = new Random();
     static ArrayList<Integer> allAnswers = new ArrayList<Integer>();
     protected void onCreate(Bundle savedInstanceState) {
