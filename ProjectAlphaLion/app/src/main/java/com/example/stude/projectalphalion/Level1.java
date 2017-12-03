@@ -35,10 +35,11 @@ public class Level1 extends Activity {
     public static int answer = 0;
     public static int lives =3;
     public static double levelNum =level;
-    public static double timeInSeconds = levelNum*0.2+10;
+    //public static double timeInSeconds = levelNum*0.2+10;
     //public static Timer timer = new Timer((int)1000*timeInSeconds,)
     public static Random RNG = new Random();
     static ArrayList<Integer> allAnswers = new ArrayList<Integer>();
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
