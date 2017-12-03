@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Timer;
 
 import static com.example.stude.projectalphalion.Play.level;
 
@@ -34,6 +35,8 @@ public class Level1 extends Activity {
     public static int answer = 0;
     public static int lives =3;
     public static double levelNum =level;
+    public static double timeInSeconds = levelNum*0.2+10;
+    //public static Timer timer = new Timer((int)1000*timeInSeconds,)
     public static Random RNG = new Random();
     static ArrayList<Integer> allAnswers = new ArrayList<Integer>();
     protected void onCreate(Bundle savedInstanceState) {
@@ -202,7 +205,7 @@ public class Level1 extends Activity {
 
         // Although levelNum is used for displaying, it also decides how big a
         // problem will be, and also how big the numbers will be.
-        levelNum = level;
+        //levelNum = level;
 
 
         //Continue loop while player is winning. Starts off true, because
