@@ -293,6 +293,7 @@ public class Level1 extends Activity {
         }
         else
         {
+            
             goLevelWorld();// end -while loop for game. If winning = false, exits.
         }
 
