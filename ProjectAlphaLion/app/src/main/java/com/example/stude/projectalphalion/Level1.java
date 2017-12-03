@@ -31,6 +31,7 @@ public class Level1 extends Activity {
     public static int operation = 0;
     public static int answer = 0;
     public static int lives ;
+    public static double levelNum ;
     public static Random RNG = new Random();
     static ArrayList<Integer> allAnswers = new ArrayList<Integer>();
     protected void onCreate(Bundle savedInstanceState) {
@@ -199,7 +200,7 @@ public class Level1 extends Activity {
 
         // Although levelNum is used for displaying, it also decides how big a
         // problem will be, and also how big the numbers will be.
-        double levelNum = 1.1;
+        levelNum = 1.1;
 
 
         //Continue loop while player is winning. Starts off true, because
