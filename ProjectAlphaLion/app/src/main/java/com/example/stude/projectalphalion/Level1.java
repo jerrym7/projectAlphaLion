@@ -10,9 +10,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import com.example.stude.projectalphalion.Play;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import static com.example.stude.projectalphalion.Play.level;
 
 
 public class Level1 extends Activity {
@@ -200,7 +203,7 @@ public class Level1 extends Activity {
 
         // Although levelNum is used for displaying, it also decides how big a
         // problem will be, and also how big the numbers will be.
-        levelNum = 1.1;
+        levelNum = level;
 
 
         //Continue loop while player is winning. Starts off true, because
