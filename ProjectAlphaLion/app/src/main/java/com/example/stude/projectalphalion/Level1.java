@@ -23,6 +23,7 @@ public class Level1 extends Activity {
     int score = 0;
     TextView scoreText;
     TextView questionText;
+    TextView timeLeftText;
     Button p1_button;
     Button p2_button;
     Button p3_button;
@@ -33,10 +34,10 @@ public class Level1 extends Activity {
     public static int MDboundary = 12;
     public static int operation = 0;
     public static int answer = 0;
-    public static int lives =3;
-    public static double levelNum =level;
-    //public static double timeInSeconds = levelNum*0.2+10;
-    //public static Timer timer = new Timer((int)1000*timeInSeconds,)
+    public static int lives ;
+    public static double levelNum;
+    public static double timeInSeconds;
+   // public static Timer timer = new Timer((int)1000*timeInSeconds,)//
     public static Random RNG = new Random();
     static ArrayList<Integer> allAnswers = new ArrayList<Integer>();
 
@@ -48,11 +49,14 @@ public class Level1 extends Activity {
         setContentView(R.layout.question_two);
 
         //set title off
-
+        levelNum=level;
+        timeInSeconds = levelNum*0.2+10;
         //full screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         scoreText = findViewById(R.id.score);
         questionText = findViewById(R.id.question_text);
+        timeLeftText = findViewById(R.id.timeLeft);
+        timeLeftText.setText(Integer.toString((int)timeInSeconds));
 
         p1_button = (Button) findViewById(R.id.button0);
         p3_button = (Button) findViewById(R.id.button2);
