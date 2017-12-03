@@ -40,6 +40,7 @@ public class Level1 extends Activity {
     public static Random RNG = new Random();
     static ArrayList<Integer> allAnswers = new ArrayList<Integer>();
 
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);

@@ -9,7 +9,7 @@ import android.view.WindowManager;
 
 
 public class Play extends Activity {
-    public static double level=0;
+    public  static double level=1.0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //set title off
@@ -24,7 +24,7 @@ public class Play extends Activity {
     {
         if(v.getId() == R.id.lvl1Button )
         {
-            level=0;
+            level=1.0;
             Intent i = new Intent(Play.this, Level1.class);
             startActivity(i);
         }
