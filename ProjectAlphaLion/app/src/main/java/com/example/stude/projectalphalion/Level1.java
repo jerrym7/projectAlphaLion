@@ -40,9 +40,10 @@ public class Level1 extends Activity {
     public static int answer = 0;
     public static int lives ;
     public static double levelNum;
-    public static double timeInSeconds = levelNum * 0.2 + 10;
+    public static double timeInSeconds, origTIme;
     public static Timer timer,animateTimer0,animateTimer1,animateTimer2;
     public static TimerTask timeAn0,timeAn1,timeAn2;
+    public static boolean animation2=false,correctA=false;
     public static ImageView  hearts[];
     public static Random RNG = new Random();
     static ArrayList<Integer> allAnswers = new ArrayList<Integer>();
@@ -64,7 +65,8 @@ public class Level1 extends Activity {
         hearts[2].setImageResource(R.drawable.heart);
         //load level and timer
         levelNum = level;
-        timeInSeconds = levelNum * 0.2 + 10;
+        origTIme=levelNum * 0.2 + 10;
+        timeInSeconds = origTIme;
         TimerTask timeFunc = new TimerTask(){
             @Override
             public void run(){
@@ -95,13 +97,6 @@ public class Level1 extends Activity {
                 animation1();
                 animateTimer1.cancel();
 
-            }
-        };
-        timeAn2 = new TimerTask(){
-            @Override
-            public void run(){
-                animation2();
-                animateTimer2.cancel();
             }
         };
         //full screen
@@ -161,9 +156,11 @@ public class Level1 extends Activity {
             if (v == p1_button) {
                 if (p1_button.getText().equals(Integer.toString(answer))) {
                     score += 1;
+                    correctA=true;
                     scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
                     scoreText.setText(Integer.toString(score));
                 } else {
+                    correctA=false;
                     scoreText.setBackgroundColor(Color.RED);
                     scoreText.setText(Integer.toString(score));
                     lives--;
@@ -172,9 +169,11 @@ public class Level1 extends Activity {
             } else if (v == p2_button) {
                 if (p2_button.getText().equals(Integer.toString(answer))) {
                     score += 1;
+                    correctA=true;
                     scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
                     scoreText.setText(Integer.toString(score));
                 } else {
+                    correctA=false;
                     scoreText.setBackgroundColor(Color.RED);
                     scoreText.setText(Integer.toString(score));
                     lives--;
@@ -183,9 +182,11 @@ public class Level1 extends Activity {
             } else if (v == p3_button) {
                 if (p3_button.getText().equals(Integer.toString(answer))) {
                     score += 1;
+                    correctA=true;
                     scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
                     scoreText.setText(Integer.toString(score));
                 } else {
+                    correctA=false;
                     scoreText.setBackgroundColor(Color.RED);
                     scoreText.setText(Integer.toString(score));
                     lives--;
@@ -194,19 +195,31 @@ public class Level1 extends Activity {
             } else if(v == p4_button) {
                 if (p4_button.getText().equals(Integer.toString(answer))) {
                     score += 1;
+                    correctA=true;
                     scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
                     scoreText.setText(Integer.toString(score));
                 } else {
+                    correctA=false;
                     scoreText.setBackgroundColor(Color.RED);
                     scoreText.setText(Integer.toString(score));
                     lives--;
                 }
                 runPlay();
             }
-            timeInSeconds = levelNum * 0.2 + 10;
-            if(lives==2){
+            origTIme=levelNum * 0.2 + 10;
+            timeInSeconds = origTIme;
+            if(!correctA&&lives==2){
                 animateTimer0=new Timer();
                 animateTimer0.scheduleAtFixedRate(timeAn0,0,(int)(100000));
+                animation2=true;
+            }
+            else if(animation2&&!correctA){
+                animateTimer1=new Timer();
+                animateTimer1.scheduleAtFixedRate(timeAn1,0,(int)(100000));
+                animation2=false;
+            }
+            else{
+
             }
     }
 
@@ -424,45 +437,6 @@ public class Level1 extends Activity {
     }
     public void animation1(){
         int life =1;
-        hearts[life].setImageResource(R.drawable.heartgrey);
-        try{
-            Thread.sleep(100);
-        }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heartwhite);
-        try{
-            Thread.sleep(200);
-        }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heart);
-        try{
-            Thread.sleep(100);
-        }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heartgrey);
-        try{
-            Thread.sleep(200);
-        }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heartwhite);
-        try{
-            Thread.sleep(100);
-        }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heart);
-        try{
-            Thread.sleep(200);
-        }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heartgrey);
-        try{
-            Thread.sleep(100);
-        }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heartblack);
-    }
-    public void animation2(){
-        int life =0;
         hearts[life].setImageResource(R.drawable.heartgrey);
         try{
             Thread.sleep(100);
