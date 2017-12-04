@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -40,7 +41,9 @@ public class Level1 extends Activity {
     public static int lives ;
     public static double levelNum;
     public static double timeInSeconds = levelNum * 0.2 + 10;
-    public static Timer timer;
+    public static Timer timer,animateTimer0,animateTimer1,animateTimer2;
+    public static TimerTask timeAn0,timeAn1,timeAn2;
+    public static ImageView  hearts[];
     public static Random RNG = new Random();
     static ArrayList<Integer> allAnswers = new ArrayList<Integer>();
 
@@ -52,9 +55,13 @@ public class Level1 extends Activity {
         setContentView(R.layout.question_two);
 
         //set title off
-
-
-
+        hearts=new ImageView[3];
+        hearts[0]=(ImageView)findViewById(R.id.imageView0);
+        hearts[0].setImageResource(R.drawable.heart);
+        hearts[1]=(ImageView)findViewById(R.id.imageView1);
+        hearts[1].setImageResource(R.drawable.heart);
+        hearts[2]=(ImageView)findViewById(R.id.imageView2);
+        hearts[2].setImageResource(R.drawable.heart);
         //load level and timer
         levelNum = level;
         timeInSeconds = levelNum * 0.2 + 10;
@@ -74,6 +81,29 @@ public class Level1 extends Activity {
         };
         timer=new Timer();
         timer.scheduleAtFixedRate(timeFunc,(int)(1000),(int)(1000));
+
+        timeAn0 = new TimerTask(){
+            @Override
+            public void run(){
+               animation0();
+               animateTimer0.cancel();
+            }
+        };
+        timeAn1 = new TimerTask(){
+            @Override
+            public void run(){
+                animation1();
+                animateTimer1.cancel();
+
+            }
+        };
+        timeAn2 = new TimerTask(){
+            @Override
+            public void run(){
+                animation2();
+                animateTimer2.cancel();
+            }
+        };
         //full screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         scoreText = findViewById(R.id.score);
@@ -174,7 +204,10 @@ public class Level1 extends Activity {
                 runPlay();
             }
             timeInSeconds = levelNum * 0.2 + 10;
-
+            if(lives==2){
+                animateTimer0=new Timer();
+                animateTimer0.scheduleAtFixedRate(timeAn0,0,(int)(100000));
+            }
     }
 
     //generator
@@ -349,5 +382,122 @@ public class Level1 extends Activity {
         Intent intent = new Intent(Level1.this, Play.class);
         startActivity(intent);
 
+    }
+    public void animation0(){
+        int life =2;
+        hearts[life].setImageResource(R.drawable.heartgrey);
+        try{
+            Thread.sleep(100);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heartwhite);
+        try{
+            Thread.sleep(200);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heart);
+        try{
+            Thread.sleep(100);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heartgrey);
+        try{
+            Thread.sleep(200);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heartwhite);
+        try{
+            Thread.sleep(100);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heart);
+        try{
+            Thread.sleep(200);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heartgrey);
+        try{
+            Thread.sleep(100);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heartblack);
+    }
+    public void animation1(){
+        int life =1;
+        hearts[life].setImageResource(R.drawable.heartgrey);
+        try{
+            Thread.sleep(100);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heartwhite);
+        try{
+            Thread.sleep(200);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heart);
+        try{
+            Thread.sleep(100);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heartgrey);
+        try{
+            Thread.sleep(200);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heartwhite);
+        try{
+            Thread.sleep(100);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heart);
+        try{
+            Thread.sleep(200);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heartgrey);
+        try{
+            Thread.sleep(100);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heartblack);
+    }
+    public void animation2(){
+        int life =0;
+        hearts[life].setImageResource(R.drawable.heartgrey);
+        try{
+            Thread.sleep(100);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heartwhite);
+        try{
+            Thread.sleep(200);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heart);
+        try{
+            Thread.sleep(100);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heartgrey);
+        try{
+            Thread.sleep(200);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heartwhite);
+        try{
+            Thread.sleep(100);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heart);
+        try{
+            Thread.sleep(200);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heartgrey);
+        try{
+            Thread.sleep(100);
+        }
+        catch (InterruptedException e){}
+        hearts[life].setImageResource(R.drawable.heartblack);
     }
 }
