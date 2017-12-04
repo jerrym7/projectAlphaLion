@@ -37,7 +37,7 @@ public class Level1 extends Activity {
     public static int ASboundary = 20;
     public static int MDboundary = 12;
     public static int operation = 0;
-    public static int answer = 0;
+    public static float answer = 0;
     public static int lives ;
     public static double levelNum;
     public static double timeInSeconds, origTIme;
@@ -46,7 +46,7 @@ public class Level1 extends Activity {
     public static boolean animation2=false,correctA=false;
     public static ImageView  hearts[];
     public static Random RNG = new Random();
-    static ArrayList<Integer> allAnswers = new ArrayList<Integer>();
+    static ArrayList<Float> allAnswers = new ArrayList<Float>();
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,14 +115,6 @@ public class Level1 extends Activity {
         runPlay();
     }
 
-    private void generateQ() {
-
-        questionText.setText(foo(answers, correct));//call the function
-
-        p1_button.setText(Integer.toString(answers[0]));
-        p2_button.setText(Integer.toString(answers[1]));
-        p3_button.setText(Integer.toString(answers[2]));
-    }
 
 
     /**
@@ -154,7 +146,7 @@ public class Level1 extends Activity {
     public void onClick(View v) {
 
             if (v == p1_button) {
-                if (p1_button.getText().equals(Integer.toString(answer))) {
+                if (p1_button.getText().equals(Double.toString(answer))) {
                     score += 1;
                     correctA=true;
                     scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
@@ -167,7 +159,7 @@ public class Level1 extends Activity {
                 }
                 runPlay();
             } else if (v == p2_button) {
-                if (p2_button.getText().equals(Integer.toString(answer))) {
+                if (p2_button.getText().equals(Double.toString(answer))) {
                     score += 1;
                     correctA=true;
                     scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
@@ -180,7 +172,7 @@ public class Level1 extends Activity {
                 }
                 runPlay();
             } else if (v == p3_button) {
-                if (p3_button.getText().equals(Integer.toString(answer))) {
+                if (p3_button.getText().equals(Double.toString(answer))) {
                     score += 1;
                     correctA=true;
                     scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
@@ -193,7 +185,7 @@ public class Level1 extends Activity {
                 }
                 runPlay();
             } else if(v == p4_button) {
-                if (p4_button.getText().equals(Integer.toString(answer))) {
+                if (p4_button.getText().equals(Double.toString(answer))) {
                     score += 1;
                     correctA=true;
                     scoreText.setBackgroundColor(this.getResources().getColor(R.color.colorCorrect));
@@ -223,65 +215,14 @@ public class Level1 extends Activity {
             }
     }
 
-    //generator
-    public static String foo(int[] x, boolean[] y) {
-        Random rand = new Random();
-        int num1 = rand.nextInt(11);
-        int num2 = rand.nextInt(11);
-        int cAnswer = rand.nextInt(3);
-        for (int i = 0; i < 3; i++) {
-            if (cAnswer == i) {
-                x[i] = num1 + num2;
-                y[i] = true;
-            } else {
-                x[i] = rand.nextInt(11) + rand.nextInt(11);
-                y[i] = false;
-            }
-        }
-        for (int i = 0; i < x.length - 1; i++) {
-            for (int j = i + 1; j < x.length; j++) {
-                if (x[i] == x[j]) {
-                    return foo(x, y);
-                }
-
-            }
-        }
-        return num1 + " + " + num2;
-    }
-
-    public static int[] generate(double levelNum) {
-        //As the level increases, the likelihood of a 3 number, 4 number, or 5 number
-        // problem increases. At level 1.1, the likelihood of a 3 number problem is
-        // '10%'.
-        Random rng = new Random();
-        int temp = (int) levelNum * 10;
-        int equationSize = rng.nextInt(temp) + 1;
-        equationSize = equationSize / 10 + 1;
-        int x[] = new int[equationSize + 1];
 
 
-        //1 = add, 2 = subtract. 3 = mult, 4 = divide
-        operation = rng.nextInt(4) + 1;
-
-        //generate question components. If 1 or 2, ASBoundary used. If 3 or 4, MDBoundary
-        for (int i = 0; i < x.length; i++) {
-            if (operation == 1 || operation == 2) {
-                x[i] = rng.nextInt(ASboundary) + 1;
-            } else {
-                x[i] = rng.nextInt(MDboundary) + 1;
-            }
-        }
-
-
-        return x;
-    }
     public void runPlay()
     {
 
 
         // Although levelNum is used for displaying, it also decides how big a
         // problem will be, and also how big the numbers will be.
-        //levelNum = level;
 
 
         //Continue loop while player is winning. Starts off true, because
@@ -293,83 +234,39 @@ public class Level1 extends Activity {
 
             //Difficulty mechanic. Level multiples of 0.5 (level 1.5, 2.0, 2.5..)
             // will have larger boundaries, which means larger numbers potentially
-            if (levelNum%0.5==0){
-                ASboundary = ASboundary + 15;
-                MDboundary = MDboundary + 2;
-            }
-
-            // Call generate, which creates an array of unique, random numbers
-            // to be used in a question.
-            int question[]= generate(levelNum);
-
-            answer = question[0];
-
-            //toString will be the output, modified based on operation (+, -, *, /)
-            String qString = "" + question[0];
-
-            //Adding
-            if(operation == 1){
-                //Note: each for-loop starts at value 1, because the first value MUST be added
-                // to the 'answer'. Otherwise, you end up subtracting answer (which is 0)
-                // by all the values in the question.
-                for (int i = 1; i < question.length; i++){
-                    answer = answer + question[i];
-                    qString += " + " + question[i];
-                }
-            }
-            //Subtracting
-            else if(operation == 2){
-                for (int i = 1; i < question.length; i++){
-                    answer = answer - question[i];
-                    qString += " - " + question[i];
-                }
-            }
-
-            else if(operation == 3){
-                for (int i = 1; i < question.length; i++){
-                    answer = answer * question[i];
-                    qString += " * " +question[i];
-                }
-            }
-            else if(operation == 4){
-                for (int i = 1; i < question.length; i++){
-                    answer = answer / question[i];
-                    qString += " / " + question[i];
-                }
-            }
-            else{
-                //fail-case. wont occur though
-            }
+            Equation eq = new Equation();
+            eq.start(level);
+            String qString = eq.questionString;
             //display question
             questionText.setText("What is "+qString +"?");
             // Rusty answer generator, but it does create a unique positioning
             // system for each answer. Could be improved if deviation formula is
             // used for 'wrong' answers added to the list.
-
-            allAnswers.add(answer);
-            allAnswers.add(answer + 1);
-            allAnswers.add(answer - 1);
-            allAnswers.add(answer +10);
+            answer = eq.correctAnswer;
+            allAnswers.add(eq.correctAnswer);
+            allAnswers.add((float)(eq.correctAnswer + 1.00));
+            allAnswers.add((float)(eq.correctAnswer - 1.00));
+            allAnswers.add((float)(eq.correctAnswer +10.0));
 
             int pick = 0;
             while (!allAnswers.isEmpty()){
                 pick = RNG.nextInt(allAnswers.size());
-                p1_button.setText(Integer.toString(allAnswers.remove(pick)));
+                p1_button.setText(Float.toString(allAnswers.remove(pick)));
                 pick = RNG.nextInt(allAnswers.size());
-                p2_button.setText(Integer.toString(allAnswers.remove(pick)));
+                p2_button.setText(Float.toString(allAnswers.remove(pick)));
                 pick = RNG.nextInt(allAnswers.size());
-                p3_button.setText(Integer.toString(allAnswers.remove(pick)));
+                p3_button.setText(Float.toString(allAnswers.remove(pick)));
                 pick = RNG.nextInt(allAnswers.size());
-                p4_button.setText(Integer.toString(allAnswers.remove(pick)));
+                p4_button.setText(Float.toString(allAnswers.remove(pick)));
 
             }
 
 
-            levelNum = levelNum+0.1;
+            level = level+0.1;
         }
         else
         {
-            
+
             goLevelWorld();// end -while loop for game. If winning = false, exits.
         }
 
