@@ -66,6 +66,9 @@ public class Level1 extends Activity {
                     timeLeftText.setText(Integer.toString((int) timeInSeconds));
                 }
                 else {
+                    timeInSeconds = levelNum * 0.2 + 10;
+                    
+                    timeLeftText.setText(Integer.toString((int) timeInSeconds));
 
                 }
             }
@@ -85,7 +88,7 @@ public class Level1 extends Activity {
         p4_button = (Button) findViewById(R.id.button3);
         //startBackgroundMusic();
         lives = 3;
-        runPlay(lives);
+        runPlay();
     }
 
     private void generateQ() {
@@ -136,7 +139,7 @@ public class Level1 extends Activity {
                     scoreText.setText(Integer.toString(score));
                     lives--;
                 }
-                runPlay(lives);
+                runPlay();
             } else if (v == p2_button) {
                 if (p2_button.getText().equals(Integer.toString(answer))) {
                     score += 1;
@@ -147,7 +150,7 @@ public class Level1 extends Activity {
                     scoreText.setText(Integer.toString(score));
                     lives--;
                 }
-                runPlay(lives);
+                runPlay();
             } else if (v == p3_button) {
                 if (p3_button.getText().equals(Integer.toString(answer))) {
                     score += 1;
@@ -158,7 +161,7 @@ public class Level1 extends Activity {
                     scoreText.setText(Integer.toString(score));
                     lives--;
                 }
-                runPlay(lives);
+                runPlay();
             } else if(v == p4_button) {
                 if (p4_button.getText().equals(Integer.toString(answer))) {
                     score += 1;
@@ -169,7 +172,9 @@ public class Level1 extends Activity {
                     scoreText.setText(Integer.toString(score));
                     lives--;
                 }
-                runPlay(lives);
+                runPlay();
+            }else{
+                runPlay();
             }
     }
 
@@ -225,7 +230,7 @@ public class Level1 extends Activity {
 
         return x;
     }
-    public void runPlay(int lives)
+    public void runPlay()
     {
 
 
@@ -326,15 +331,21 @@ public class Level1 extends Activity {
     }
     //go back to level world after you got 0 lives
     private void goLevelWorld() {
-        timer.cancel();
-        timer=null;
+        if(timer != null) {
+            timer.cancel();
+            timer.purge();
+            timer = null;
+        }
         Intent i = new Intent(Level1.this, Play.class);
         startActivity(i);
 
     }
     public void onBackPressed(){
-        timer.cancel();
-        timer=null;
+        if(timer != null) {
+            timer.cancel();
+            timer.purge();
+            timer = null;
+        }
         super.onBackPressed();
         Intent intent = new Intent(Level1.this, Play.class);
         startActivity(intent);
