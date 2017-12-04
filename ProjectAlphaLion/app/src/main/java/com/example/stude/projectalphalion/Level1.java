@@ -66,8 +66,7 @@ public class Level1 extends Activity {
                     timeLeftText.setText(Integer.toString((int) timeInSeconds));
                 }
                 else {
-                    timeInSeconds = levelNum * 0.2 + 10;
-                    
+
                     timeLeftText.setText(Integer.toString((int) timeInSeconds));
 
                 }
@@ -173,9 +172,9 @@ public class Level1 extends Activity {
                     lives--;
                 }
                 runPlay();
-            }else{
-                runPlay();
             }
+            timeInSeconds = levelNum * 0.2 + 10;
+
     }
 
     //generator
