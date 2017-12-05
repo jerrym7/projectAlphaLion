@@ -209,9 +209,20 @@ public class Level1 extends Activity {
             origTIme=levelNum * 0.2 + 10;
             timeInSeconds = origTIme;
             if(!correctA&&lives==2){
-                animateTimer0=new Timer();
-                animateTimer0.scheduleAtFixedRate(timeAn0,0,(int)(100000));
-                animation2=true;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        animateTimer0=new Timer();
+                        animateTimer0.scheduleAtFixedRate(timeAn0,0,(int)(100000));
+                        animation2=true;
+                        try{
+                            Thread.sleep(10000);
+                        }
+                        catch (InterruptedException e){}
+
+                    }
+                });
             }
             else if(animation2&&!correctA){
                 animateTimer1=new Timer();
