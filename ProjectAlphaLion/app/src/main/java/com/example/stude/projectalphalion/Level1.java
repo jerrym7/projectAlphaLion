@@ -43,26 +43,22 @@ public class Level1 extends Activity {
     public static int lives ;
     public static double levelNum;
     public static double timeInSeconds, origTIme;
-    public static Thread anT;
     public static Handler h=new Handler();
     public Runnable r0 = new Runnable() {
-        int interval=0;
         @Override
         public void run() {
             hearts[1].setImageResource(R.drawable.heartwhite);
-            h.postDelayed(r1,100);
+            h.postDelayed(r1,200);
         }
     };
     public Runnable r1 = new Runnable() {
-        int interval=0;
         @Override
         public void run() {
             hearts[1].setImageResource(R.drawable.heart);
-            h.postDelayed(r2,100);
+            h.postDelayed(r2,200);
         }
     };
     public Runnable r2 = new Runnable() {
-        int interval=0;
         @Override
         public void run() {
             hearts[1].setImageResource(R.drawable.heartgrey);
@@ -70,14 +66,41 @@ public class Level1 extends Activity {
         }
     };
     public Runnable r3 = new Runnable() {
-        int interval=0;
         @Override
         public void run() {
             hearts[1].setImageResource(R.drawable.heartblack);
 
         }
     };
-    public static Timer timer,animateTimer0,animateTimer1;
+    public Runnable ar0 = new Runnable() {
+        @Override
+        public void run() {
+            hearts[2].setImageResource(R.drawable.heartwhite);
+            h.postDelayed(ar1,200);
+        }
+    };
+    public Runnable ar1 = new Runnable() {
+        @Override
+        public void run() {
+            hearts[2].setImageResource(R.drawable.heart);
+            h.postDelayed(ar2,200);
+        }
+    };
+    public Runnable ar2 = new Runnable() {
+        @Override
+        public void run() {
+            hearts[2].setImageResource(R.drawable.heartgrey);
+            h.postDelayed(ar3,100);
+        }
+    };
+    public Runnable ar3 = new Runnable() {
+        @Override
+        public void run() {
+            hearts[2].setImageResource(R.drawable.heartblack);
+
+        }
+    };
+    public static Timer timer;
     public static Random RNG = new Random();
     static ArrayList<Float> allAnswers = new ArrayList<Float>();
 
@@ -115,7 +138,7 @@ public class Level1 extends Activity {
                             timeLeftText.setText(Integer.toString((int) timeInSeconds));
                         }
                         else {
-
+                            timeInSeconds=origTIme;
                             timeLeftText.setText(Integer.toString((int) timeInSeconds));
 
                         }
@@ -123,15 +146,6 @@ public class Level1 extends Activity {
                 });
             }
         },0, 1000);
-        anT = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                animation0();
-            }
-        });
-        animateTimer0=new Timer();
-
-
 
         //full screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -236,11 +250,11 @@ public class Level1 extends Activity {
             timeInSeconds = origTIme;
             timeLeftText.setText(Integer.toString((int)timeInSeconds));
             if(!correctA&&lives==2){
-                h.postDelayed(r0,0);
+                h.postDelayed(ar0,0);
+                animation2=true;
             }
             else if(animation2&&!correctA){
-                animateTimer1=new Timer();
-                //animateTimer1.scheduleAtFixedRate(timeAn1,0,(int)(100000));
+                h.postDelayed(r0,0);
                 animation2=false;
             }
             else{
