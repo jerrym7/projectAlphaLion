@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -42,13 +43,46 @@ public class Level1 extends Activity {
     public static int lives ;
     public static double levelNum;
     public static double timeInSeconds, origTIme;
-    public static Timer timer,animateTimer0,animateTimer1,animateTimer2;
-    public static TimerTask timeAn0,timeAn1,timeAn2;
-    public static boolean animation2=false,correctA=false;
-    public static ImageView  hearts[];
+    public static Thread anT;
+    public static Handler h=new Handler();
+    public Runnable r0 = new Runnable() {
+        int interval=0;
+        @Override
+        public void run() {
+            hearts[1].setImageResource(R.drawable.heartwhite);
+            h.postDelayed(r1,100);
+        }
+    };
+    public Runnable r1 = new Runnable() {
+        int interval=0;
+        @Override
+        public void run() {
+            hearts[1].setImageResource(R.drawable.heart);
+            h.postDelayed(r2,100);
+        }
+    };
+    public Runnable r2 = new Runnable() {
+        int interval=0;
+        @Override
+        public void run() {
+            hearts[1].setImageResource(R.drawable.heartgrey);
+            h.postDelayed(r3,100);
+        }
+    };
+    public Runnable r3 = new Runnable() {
+        int interval=0;
+        @Override
+        public void run() {
+            hearts[1].setImageResource(R.drawable.heartblack);
+
+        }
+    };
+    public static Timer timer,animateTimer0,animateTimer1;
     public static Random RNG = new Random();
     static ArrayList<Float> allAnswers = new ArrayList<Float>();
 
+    public static boolean animation2=false,correctA=false;
+    public static ImageView  hearts[];
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,8 +102,8 @@ public class Level1 extends Activity {
         levelNum = level;
         origTIme=levelNum * 0.2 + 10;
         timeInSeconds = origTIme;
-        Timer timeFunc = new Timer();
-        timeFunc.schedule(new TimerTask() {
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
 
             @Override
             public void run() {
@@ -89,22 +123,16 @@ public class Level1 extends Activity {
                 });
             }
         },0, 1000);
-
-        timeAn0 = new TimerTask(){
+        anT = new Thread(new Runnable() {
             @Override
-            public void run(){
-               animation0();
-               animateTimer0.cancel();
+            public void run() {
+                animation0();
             }
-        };
-        timeAn1 = new TimerTask(){
-            @Override
-            public void run(){
-                animation1();
-                animateTimer1.cancel();
+        });
+        animateTimer0=new Timer();
 
-            }
-        };
+
+
         //full screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         scoreText = findViewById(R.id.score);
@@ -206,25 +234,13 @@ public class Level1 extends Activity {
             }
             origTIme=levelNum * 0.2 + 10;
             timeInSeconds = origTIme;
+            timeLeftText.setText(Integer.toString((int)timeInSeconds));
             if(!correctA&&lives==2){
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        animateTimer0=new Timer();
-                        animateTimer0.scheduleAtFixedRate(timeAn0,0,(int)(100000));
-                        animation2=true;
-                        try{
-                            Thread.sleep(10000);
-                        }
-                        catch (InterruptedException e){}
-
-                    }
-                });
+                h.postDelayed(r0,0);
             }
             else if(animation2&&!correctA){
                 animateTimer1=new Timer();
-                animateTimer1.scheduleAtFixedRate(timeAn1,0,(int)(100000));
+                //animateTimer1.scheduleAtFixedRate(timeAn1,0,(int)(100000));
                 animation2=false;
             }
             else{
