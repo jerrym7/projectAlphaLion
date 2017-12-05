@@ -1,14 +1,19 @@
 package com.example.stude.projectalphalion;
-import java.util.Random;
+
+		import java.util.Random;
 public class Equation {
-	Random rand;//random generator object
+	//Random rand;//random generator object
 	protected String questionString ="";//hold the question
 	protected String[] miniEqs;
 	protected int numberOfOperations = 1;//default operations
 	protected float correctAnswer = 0;//hold the correct answer
 	protected String allOperations[]; //holds all operations to do.
-	protected int index=0;//keep track of the index. 
+	protected int index=0;//keep track of the index.
 	protected int boundary=2;//numbers to be operated
+	//-------------------------------
+	private static Random rand = new Random();
+	protected int ASboundary = 12;
+	//-------------------------------
 	public Equation()
 	{
 		String equationString = questionString;
@@ -25,14 +30,27 @@ public class Equation {
 		return questionString;
 	}
 	//get a random set of operation
+	//----------------------------------------------------------------------
+	public int rngSize(){
+
+
+		return 0;
+	}
+	//----------------------------------------------------------------------
 	private void howManyOperation(double level)
 	{
 		int operations=(int)level;
-		rand  = new Random();
+
+		//rand  = new Random();
 		//simple +,-,/,*, %, equations
+		int test = rngSize();
+
+
+		//-------------------------------------------------------------
+                /*
 		if(level<=1)
 		{
-			numberOfOperations= (rand.nextInt(2)+1);//one to two operation
+			numberOfOperations= (rand.nextInt(2)+2);//one to two operation
 		}
 		//else just +,-,/,*
 		else if(level<=2)
@@ -43,12 +61,20 @@ public class Equation {
 		{
 			numberOfOperations= (rand.nextInt(4)+1);//random number 1-4
 		}
-		else 
+		else
 		{
 			numberOfOperations= (rand.nextInt(operations)+1); //random number of operation from 1-level
 		}
-		
-		
+                */
+		if (level >100){
+			numberOfOperations = (2) +2;
+		}
+		else{
+			numberOfOperations = (int)(level*0.03)+2;
+			numberOfOperations = rand.nextInt((int)numberOfOperations) + 2;
+		}
+		System.out.println(numberOfOperations +" operations");
+
 	}
 	public void start(double level) {
 		// TODO Auto-generated method stub
@@ -59,11 +85,11 @@ public class Equation {
 		System.out.println("What is "+questionString+"?");
 		extractDecimal(correctAnswer);
 		System.out.println(correctAnswer);
-		
+		ASboundary= ASboundary +5;
 	}
 
 	//extract to two decimal places
-	
+
 	public void extractDecimal(float answer)
 	{
 		float xRound;
@@ -77,10 +103,10 @@ public class Equation {
 		{
 			xRound = (float) (xIntHund/100.);
 		}
-		
+
 		correctAnswer = xRound;
 	}
-	
+
 	//put all the operations in the array
 	private void inArrOperations() {
 		// TODO Auto-generated method stub
@@ -90,15 +116,15 @@ public class Equation {
 			index++;//update
 			numberOfOperations--;//update
 		}
-		
+
 		calculateEquation(allOperations);
-		
+
 	}
-	
+
 	//start the equations by parts
 	private void calculateEquation(String[] allOperations2) {
 		// TODO Auto-generated method stub
-		rand = new Random();
+		//rand = new Random();
 		int indexes=0;
 		int counter = 0;
 		for(int i = 0;i<allOperations2.length;i++)
@@ -107,18 +133,18 @@ public class Equation {
 			indexes++;
 			counter++;
 		}
-		
+
 	}
 	//calculate part by parts
 	private void calculateParts(String operation,int boundaryxyz,int indexes, int counter) {
 		// TODO Auto-generated method stub
-		rand = new Random();//create random numbers
+		//rand = new Random();//create random numbers
 		//numbers to be added, subtracted
 		//generate random number from 0 to 10
-		
-		int x = rand.nextInt(11);
-		int y = rand.nextInt(11);
-		int z = rand.nextInt(11);
+
+		int x = rand.nextInt(ASboundary) +1;
+		int y = rand.nextInt(ASboundary) +1;
+		int z = rand.nextInt(ASboundary) +1;
 		if(operation.equals(null))//check if null
 		{
 			return;
@@ -127,7 +153,7 @@ public class Equation {
 		{
 			if(counter==0)
 			{
-			questionString += "("+Integer.toString(x)+" + " + Integer.toString(y)+" + "+Integer.toString(z);
+				questionString += "("+Integer.toString(x)+" + " + Integer.toString(y)+" + "+Integer.toString(z);
 			}
 			else
 			{
@@ -139,7 +165,7 @@ public class Equation {
 		{
 			if(counter==0)
 			{
-			questionString += "("+Integer.toString(x)+" + " + Integer.toString(y)+")";
+				questionString += "("+Integer.toString(x)+" + " + Integer.toString(y)+")";
 			}
 			else
 			{
@@ -147,12 +173,12 @@ public class Equation {
 			}
 			correctAnswer=(float) correctAnswer+(x+y);
 		}
-		
+
 		else if(operation.equals("-") && boundary>=3)
 		{
 			if(counter==0)
 			{
-			questionString += "("+Integer.toString(x)+" - " + Integer.toString(y)+" - "+Integer.toString(z);
+				questionString += "("+Integer.toString(x)+" - " + Integer.toString(y)+" - "+Integer.toString(z);
 			}
 			else
 			{
@@ -164,22 +190,22 @@ public class Equation {
 		{
 			if(counter==0)
 			{
-			questionString += "("+Integer.toString(x)+" - " + Integer.toString(y)+")";
-			//had to do it separated because then it would be 0-(x-y) which is negative and in reality it suppose to be positive
-			correctAnswer= (float)correctAnswer + (x-y);
+				questionString += "("+Integer.toString(x)+" - " + Integer.toString(y)+")";
+				//had to do it separated because then it would be 0-(x-y) which is negative and in reality it suppose to be positive
+				correctAnswer= (float)correctAnswer + (x-y);
 			}
 			else
 			{
 				questionString += "-("+Integer.toString(x)+" - " + Integer.toString(y)+")";
 				correctAnswer= (float)correctAnswer-(x-y);
 			}
-			
+
 		}
 		else if(operation.equals("*") && boundary>=3)
 		{
 			if(counter==0)
 			{
-			questionString += "("+Integer.toString(x)+" * " + Integer.toString(y)+" * "+Integer.toString(z);
+				questionString += "("+Integer.toString(x)+" * " + Integer.toString(y)+" * "+Integer.toString(z);
 			}
 			else
 			{
@@ -191,25 +217,25 @@ public class Equation {
 		{
 			if(counter==0)
 			{
-			questionString += "("+Integer.toString(x)+" * " + Integer.toString(y)+")";
-			correctAnswer = correctAnswer + (x*y);
+				questionString += "("+Integer.toString(x)+" * " + Integer.toString(y)+")";
+				correctAnswer = correctAnswer + (x*y);
 			}
 			else
 			{
 				questionString += "*("+Integer.toString(x)+" * " + Integer.toString(y)+")";
 				correctAnswer= (float) correctAnswer* (x*y);
 			}
-			
+
 		}
-		else 
+		else
 		{
 			if(y==0)
 			{
 				y=(rand.nextInt(10)+1);
 				if(counter==0)
 				{
-				questionString += "("+Integer.toString(x)+" / " + Integer.toString(y)+")";
-				correctAnswer = (float)correctAnswer+ (float) ((float)x/(float)y);
+					questionString += "("+Integer.toString(x)+" / " + Integer.toString(y)+")";
+					correctAnswer = (float)correctAnswer+ (float) ((float)x/(float)y);
 				}
 				else
 				{
@@ -218,30 +244,30 @@ public class Equation {
 				}
 			}
 			else{
-			if(counter==0)
-			{
-			questionString += "("+Integer.toString(x)+" / " + Integer.toString(y)+")";
-			correctAnswer = (float)correctAnswer+((float)x/(float)y);
-			}
-			else
-			{
-				//make sure there is no denominator that is equal to zero.
-				float w =((float)x/(float)y);
-				if(w==0){
-					w= w+1;
-					questionString += "/("+Float.toString(w) +")";
-					
+				if(counter==0)
+				{
+					questionString += "("+Integer.toString(x)+" / " + Integer.toString(y)+")";
+					correctAnswer = (float)correctAnswer+((float)x/(float)y);
 				}
-				questionString += "/("+Integer.toString(x)+" / " + Integer.toString(y)+")";
-				correctAnswer = (float) correctAnswer/w;
-			}
+				else
+				{
+					//make sure there is no denominator that is equal to zero.
+					float w =((float)x/(float)y);
+					if(w==0){
+						w= w+1;
+						questionString += "/("+Float.toString(w) +")";
+
+					}
+					questionString += "/("+Integer.toString(x)+" / " + Integer.toString(y)+")";
+					correctAnswer = (float) correctAnswer/w;
+				}
 			}
 		}
 	}
 	//get the operations number
 	private String setOperation(int numberOfOperations, int index)
 	{
-		rand = new Random();//start the random object
+		//rand = new Random();//start the random object
 		int getOperation;
 		if(numberOfOperations<=0)
 		{
@@ -267,30 +293,30 @@ public class Equation {
 			{
 				return "/";
 			}
-			else 
+			else
 				return "%";
 		}
 		else
-			//just get 
+			//just get
 			getOperation = rand.nextInt(4);//random number from 0-3
-			if(getOperation == 0)
-			{
-				return "+";
-			}
-			else if(getOperation == 1)
-			{
-				return "-";
-			}
-			else if(getOperation == 2)
-			{
-				return "*";
-			}
-			else
-			{
-				return "/";
-			}
-			
+		if(getOperation == 0)
+		{
+			return "+";
+		}
+		else if(getOperation == 1)
+		{
+			return "-";
+		}
+		else if(getOperation == 2)
+		{
+			return "*";
+		}
+		else
+		{
+			return "/";
+		}
+
 	}
-	
+
 
 }

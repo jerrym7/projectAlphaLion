@@ -18,7 +18,7 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textSize="28sp"
+        android:textSize="24sp"
         android:textStyle="bold|italic"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/button0"
