@@ -68,22 +68,27 @@ public class Level1 extends Activity {
         levelNum = level;
         origTIme=levelNum * 0.2 + 10;
         timeInSeconds = origTIme;
-        TimerTask timeFunc = new TimerTask(){
+        Timer timeFunc = new Timer();
+        timeFunc.schedule(new TimerTask() {
+
             @Override
-            public void run(){
-                if(timeInSeconds>0){
-                    timeInSeconds--;
-                    timeLeftText.setText(Integer.toString((int) timeInSeconds));
-                }
-                else {
+            public void run() {
+                Level1.this.runOnUiThread(new Runnable() {
+                    public void run() {
+                        // update UI here
+                        if(timeInSeconds>0){
+                            timeInSeconds--;
+                            timeLeftText.setText(Integer.toString((int) timeInSeconds));
+                        }
+                        else {
 
-                    timeLeftText.setText(Integer.toString((int) timeInSeconds));
+                            timeLeftText.setText(Integer.toString((int) timeInSeconds));
 
-                }
+                        }
+                    }
+                });
             }
-        };
-        timer=new Timer();
-        timer.scheduleAtFixedRate(timeFunc,(int)(1000),(int)(1000));
+        },0, 1000);
 
         timeAn0 = new TimerTask(){
             @Override
