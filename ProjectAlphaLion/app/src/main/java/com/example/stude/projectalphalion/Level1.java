@@ -43,7 +43,7 @@ public class Level1 extends Activity {
     public static int lives ;
     public static double levelNum;
     public static double timeInSeconds, origTIme;
-    public static Handler h=new Handler();
+    public static Handler h=new Handler(),h2=new Handler();
     public Runnable r = new Runnable() {
         @Override
         public void run() {
@@ -149,7 +149,7 @@ public class Level1 extends Activity {
                             lives--;
                             correctA=false;
                             loseheart();
-                            h.postDelayed(r,0);
+                            h2.postDelayed(r,0);
                         }
                     }
                 });
