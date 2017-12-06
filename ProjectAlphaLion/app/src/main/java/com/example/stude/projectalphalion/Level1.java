@@ -44,6 +44,12 @@ public class Level1 extends Activity {
     public static double levelNum;
     public static double timeInSeconds, origTIme;
     public static Handler h=new Handler();
+    public Runnable r = new Runnable() {
+        @Override
+        public void run() {
+            runPlay();
+        }
+    };
     public Runnable r0 = new Runnable() {
         @Override
         public void run() {
@@ -140,7 +146,7 @@ public class Level1 extends Activity {
                         else {
                             timeInSeconds=origTIme;
                             timeLeftText.setText(Integer.toString((int) timeInSeconds));
-
+                            h.postDelayed(r,0);
                         }
                     }
                 });
