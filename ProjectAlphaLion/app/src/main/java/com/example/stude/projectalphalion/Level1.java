@@ -146,6 +146,9 @@ public class Level1 extends Activity {
                         else {
                             timeInSeconds=origTIme;
                             timeLeftText.setText(Integer.toString((int) timeInSeconds));
+                            lives--;
+                            correctA=false;
+                            loseheart();
                             h.postDelayed(r,0);
                         }
                     }
@@ -255,17 +258,8 @@ public class Level1 extends Activity {
             origTIme=levelNum * 0.2 + 10;
             timeInSeconds = origTIme;
             timeLeftText.setText(Integer.toString((int)timeInSeconds));
-            if(!correctA&&lives==2){
-                h.postDelayed(ar0,0);
-                animation2=true;
-            }
-            else if(animation2&&!correctA){
-                h.postDelayed(r0,0);
-                animation2=false;
-            }
-            else{
+            loseheart();
 
-            }
     }
 
 
@@ -346,82 +340,17 @@ public class Level1 extends Activity {
         startActivity(intent);
 
     }
-    public void animation0(){
-        int life =2;
-        hearts[life].setImageResource(R.drawable.heartgrey);
-        try{
-            Thread.sleep(100);
+    public void loseheart(){
+        if(!correctA&&lives==2){
+            h.postDelayed(ar0,0);
+            animation2=true;
         }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heartwhite);
-        try{
-            Thread.sleep(200);
+        else if(animation2&&!correctA){
+            h.postDelayed(r0,0);
+            animation2=false;
         }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heart);
-        try{
-            Thread.sleep(100);
+        else{
+
         }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heartgrey);
-        try{
-            Thread.sleep(200);
-        }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heartwhite);
-        try{
-            Thread.sleep(100);
-        }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heart);
-        try{
-            Thread.sleep(200);
-        }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heartgrey);
-        try{
-            Thread.sleep(100);
-        }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heartblack);
-    }
-    public void animation1(){
-        int life =1;
-        hearts[life].setImageResource(R.drawable.heartgrey);
-        try{
-            Thread.sleep(100);
-        }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heartwhite);
-        try{
-            Thread.sleep(200);
-        }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heart);
-        try{
-            Thread.sleep(100);
-        }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heartgrey);
-        try{
-            Thread.sleep(200);
-        }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heartwhite);
-        try{
-            Thread.sleep(100);
-        }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heart);
-        try{
-            Thread.sleep(200);
-        }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heartgrey);
-        try{
-            Thread.sleep(100);
-        }
-        catch (InterruptedException e){}
-        hearts[life].setImageResource(R.drawable.heartblack);
     }
 }
