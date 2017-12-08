@@ -316,9 +316,21 @@ public class Level1 extends Activity {
         }
         else
         {
-
-            goLevelWorld();// end -while loop for game. If winning = false, exits.
+            gameOver();
+            //goLevelWorld();// end -while loop for game. If winning = false, exits.
         }
+
+    }
+    //go back to level world after you got 0 lives
+    private void gameOver() {
+        if(timer != null) {
+            timer.cancel();
+            timer.purge();
+            timer = null;
+        }
+        Intent i = new Intent(this, GameOver.class);
+        i.putExtra("score",score);
+        startActivity(i);
 
     }
     //go back to level world after you got 0 lives
