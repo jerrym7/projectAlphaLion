@@ -4,4 +4,6 @@
     <string name="Music">Background Music</string>
     <string name="Settings">Settings</string>
     <string name="About">About</string>
+    <string name="HighestScore">Best</string>
+    <string name="YourScore">Score</string>
 </resources>
