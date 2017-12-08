@@ -11,19 +11,20 @@ import android.widget.TextView;
 
 public class GameOver extends Activity {
     protected int score;
-    protected int highestScore =10;
+    protected int highestScore =10;//get from the file
     Button retryButton;
     Button mainMenuButton;
-    TextView highestScoreText = (TextView) findViewById(R.id.yourscoret);
-    TextView yourScoreText = (TextView) findViewById(R.id.highestscoret);
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //set title off
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         Bundle getScore = getIntent().getExtras();
         score = getScore.getInt("score");
-        //yourScoreText.setText("1");
-        //highestScoreText.setText("0");
+        TextView highestScoreText = (TextView) findViewById(R.id.yourscoret);
+        TextView yourScoreText = (TextView) findViewById(R.id.highestscoret);
+        yourScoreText.setText(""+score);
+        highestScoreText.setText(""+highestScore);
         setContentView(R.layout.gameover);
 
 
