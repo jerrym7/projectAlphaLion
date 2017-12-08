@@ -19,13 +19,17 @@ public class GameOver extends Activity {
         super.onCreate(savedInstanceState);
         //set title off
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.gameover);
         Bundle getScore = getIntent().getExtras();
         score = getScore.getInt("score");
-        TextView highestScoreText = (TextView) findViewById(R.id.yourscoret);
-        TextView yourScoreText = (TextView) findViewById(R.id.highestscoret);
-        yourScoreText.setText(""+score);
-        highestScoreText.setText(""+highestScore);
-        setContentView(R.layout.gameover);
+
+        TextView highestScoreText = new TextView(this);
+        TextView yourScoreText = new TextView(this);
+        highestScoreText = (TextView) findViewById(R.id.highestscoret);
+        yourScoreText = (TextView) findViewById(R.id.yourscoret);
+        highestScoreText.setText(String.valueOf(highestScore));
+        yourScoreText.setText(String.valueOf(score));
+
 
 
         //full screen
