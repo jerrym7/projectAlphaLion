@@ -24,45 +24,38 @@ public class Play extends Activity {
     {
         if(v.getId() == R.id.lvl1Button )
         {
-            level=0;
+            level=1.0;
             Intent i = new Intent(Play.this, Level1.class);
-            i.putExtra("level", level);//send data to the other class
             startActivity(i);
-
         }
         else if(v.getId() == R.id.lvl2Button )
         {
             level=1.0;
             Intent i = new Intent(Play.this, Level1.class);
-            i.putExtra("level", level);//send data to the other class
             startActivity(i);
         }
         else if(v.getId() == R.id.lvl3Button )
         {
             level=2.0;
             Intent i = new Intent(Play.this, Level1.class);
-            i.putExtra("level", level);//send data to the other class
             startActivity(i);
         }
         else if(v.getId() == R.id.lvl4Button )
         {
             level=3.0;
             Intent i = new Intent(Play.this, Level1.class);
-            i.putExtra("level", level);//send data to the other class
             startActivity(i);
         }
         else if(v.getId() == R.id.lvl5Button )
         {
             level=4.0;
             Intent i = new Intent(Play.this, Level1.class);
-            i.putExtra("level", level);//send data to the other class
             startActivity(i);
         }
         else if(v.getId() == R.id.lvl6Button )
         {
             level=5.0;
             Intent i = new Intent(Play.this, Level1.class);
-            i.putExtra("level", level);//send data to the other class
             startActivity(i);
         }
     }

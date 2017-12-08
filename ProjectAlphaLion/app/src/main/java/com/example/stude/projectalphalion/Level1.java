@@ -57,7 +57,6 @@ public class Level1 extends Activity {
             h.postDelayed(r1,200);
         }
     };
-
     public Runnable r1 = new Runnable() {
         @Override
         public void run() {
@@ -119,9 +118,8 @@ public class Level1 extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.question_two);
-        Bundle getLevel = getIntent().getExtras();
-        level = getLevel.getDouble("level");
-                //set title off
+
+        //set title off
         hearts=new ImageView[3];
         hearts[0]=(ImageView)findViewById(R.id.imageView0);
         hearts[0].setImageResource(R.drawable.heart);
@@ -130,8 +128,8 @@ public class Level1 extends Activity {
         hearts[2]=(ImageView)findViewById(R.id.imageView2);
         hearts[2].setImageResource(R.drawable.heart);
         //load level and timer
-        level = level;
-        origTIme=level * 0.2 + 10;
+        levelNum = level;
+        origTIme=levelNum * 0.2 + 10;
         timeInSeconds = origTIme;
         timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -277,7 +275,6 @@ public class Level1 extends Activity {
         //Continue loop while player is winning. Starts off true, because
         // the player is already winning by choosing our amazing game.
         boolean winning = true;
-
         if(lives>0){
             //Display level with levelNum; increment by 0.1 each loop run.
 
